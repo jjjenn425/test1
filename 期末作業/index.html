@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scan Image1 Show Image2</title>
+
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+
+  <a-scene
+    mindar-image="imageTargetSrc: targets.mind;"
+    color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+
+    <a-assets>
+      <img id="outputImage" src="image2.png">
+    </a-assets>
+
+    <a-camera
+      position="0 0 0"
+      look-controls="enabled: false">
+    </a-camera>
+
+    <!-- 掃描 image1 後，顯示 image2 -->
+    <a-entity mindar-image-target="targetIndex: 0">
+
+      <a-image
+        src="#outputImage"
+        position="0 0 0"
+        rotation="0 0 0"
+        width="1"
+        height="0.7">
+      </a-image>
+
+    </a-entity>
+
+  </a-scene>
+
+</body>
+</html>
